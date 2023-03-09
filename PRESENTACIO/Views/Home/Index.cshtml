@@ -1,0 +1,74 @@
+﻿@model IEnumerable<DATOS.resultados>
+
+@{
+    ViewBag.Title = "Calculadora App";
+}
+
+<main>
+    <div class="container-fluid text-center">
+        <h2>Calculadora App</h2>
+    </div>
+    <br />
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                @using (Html.BeginForm("/Index", "Home", FormMethod.Post))
+                {
+
+
+<div class="container-fluid">
+                        <h2>Calculadora</h2>
+                        <div class="form-group">
+                            <label for="no1">No1</label>
+                            <input asp-for="Operador1" type="number" class="form-control" id="no1" name="no1" value="no1" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="no2">No2</label>
+                            <input asp-for="Operador2" type="number" class="form-control" id="no2" name="no2" value="no2" />
+                        </div>
+                        <form action="/home/Index" method="post">
+                            <div class="col-form-label">
+                                <button name="calculate" value="+" class="btn btn-info">+</button>
+                                <button name="calculate" value="-" class="btn btn-info">-</button>
+                                <button name="calculate" value="*" class="btn btn-info">*</button>
+                                <button name="calculate" value="/" class="btn btn-info">/</button>
+                                
+                            </div>
+                        </form>
+
+                    </div>
+                }
+
+            </div>
+            <div class="col">
+                <h2>Resultados</h2>
+                <div class="" style="display: block; position: relative; height: 200px; overflow: auto;">
+                    <table class="table table-bordered table-striped mb-0">
+                        <tr>
+                            <th scope="col">
+                                @Html.DisplayNameFor(model => model.Id)
+                            </th>
+                            <th scope="col">
+                                @Html.DisplayNameFor(model => model.result)
+                            </th>
+                        </tr>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Id)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.result)
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
